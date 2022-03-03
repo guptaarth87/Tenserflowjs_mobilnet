@@ -1,5 +1,6 @@
 function process(img_){
      // Load the model.
+     document.getElementById('output').innerHTML+=`<img class="col-lg-6 col-md-8 col-sm-12" src=${img_.src}  />`
      mobilenet.load().then(model => {
         // Classify the image.
          model.classify(img_).then(predictions => {
@@ -7,14 +8,14 @@ function process(img_){
           console.log('Predictions: ');
           console.log(predictions);
          
-          const img = document.querySelector("img"); 
-          img.src = img_.src;
+         
+          
           document.getElementById('details').innerHTML+=
                              `<div class="card" >
                              <ul class="list-group list-group-flush">
-                               <li class="list-group-item">Prediction1: ${predictions[0].className} | Probability: ${predictions[0].probability}</li>
-                               <li class="list-group-item">Prediction2: ${predictions[1].className} | Probability: ${predictions[1].probability}</li>
-                               <li class="list-group-item">Prediction3: ${predictions[2].className} | Probability: ${predictions[2].probability}</li>
+                               <li class="list-group-item">Prediction1: ${predictions[0].className} | Probability: ${(predictions[0].probability)*100}%</li>
+                               <li class="list-group-item">Prediction2: ${predictions[1].className} | Probability: ${(predictions[1].probability)*100}%</li>
+                               <li class="list-group-item">Prediction3: ${predictions[2].className} | Probability: ${(predictions[2].probability)*100}%</li>
                              </ul>
                            </div>`;
         });
