@@ -1,9 +1,10 @@
 function process(img_){
      // Load the model.
-     document.getElementById('output').innerHTML+=`<img class="col-lg-6 col-md-8 col-sm-12" src=${img_.src}  />`
+     document.getElementById('output').innerHTML+=`<img class="col-lg-6 col-md-8 col-sm-12 image_out" src=${img_.src}  />`
+     
      mobilenet.load().then(model => {
         // Classify the image.
-         model.classify(img_).then(predictions => {
+        model .classify(img_).then(predictions => {
         
           console.log('Predictions: ');
           console.log(predictions);
